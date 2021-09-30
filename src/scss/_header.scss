@@ -1,0 +1,35 @@
+@media (min-width: 300px) {
+    .nq-header {
+        // background: $bg-home;
+        border-bottom: 2px solid transparent;
+        .nq-nav {
+            width: 100%;
+        }
+        .navbar-nav {
+            li {
+                margin: 0 20px;
+                a.nav-link {
+                    // color: #fff;
+                    line-height: 30px;
+                    border-bottom: 1px solid transparent;
+
+                    font-size: 18px;
+                    font-weight: bold;
+                    font-family: "roboto", sans-serif;
+
+                    padding-right: 0;
+                    padding-left: 0;
+                    &:hover {
+                        color: $pm-color;
+                        transition: all 0.2s ease;
+                    }
+                }
+                a.active {
+                    padding-right: 0;
+                    padding-left: 0;
+                    border-color: $pm-color;
+                }
+            }
+        }
+    }
+}

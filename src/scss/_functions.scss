@@ -1,0 +1,10 @@
+@mixin fadeinup($target, $time) {
+    .fadeInUp {
+        // animation-delay: 1000ms;
+        @for $i from 1 to $target {
+            &:nth-child(#{$i}) {
+                animation-delay: $i * $time;
+            }
+        }
+    }
+}

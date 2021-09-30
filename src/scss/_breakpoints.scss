@@ -1,0 +1,497 @@
+@media (min-width: 300px) {
+    .nq-header {
+        .form-check-label {
+            margin-left: 20px;
+        }
+    }
+    .nq-home {
+        text-align: center;
+        padding-top: 100px;
+        padding-bottom: 20px;
+        // padding: 100px 0;
+        .img-col {
+            padding-top: 20px;
+        }
+        .header-info {
+            padding-top: 30px;
+            @include fadeinup(7, 0.2s);
+            ul.info {
+                padding-left: 0;
+            }
+            ul.info li {
+                &:hover i {
+                    color: $pm-color;
+                }
+                i {
+                    margin-right: 10px;
+                    font-size: 20px;
+                }
+                a,
+                span {
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+            ul.list-inline li {
+                margin: 0 20px;
+                &:nth-child(1) {
+                    margin-left: 0;
+                }
+
+                a {
+                    font-size: 40px;
+                    &:hover {
+                        color: $pm-color;
+                    }
+                }
+            }
+
+            h2 {
+                font-size: 30px;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin: 10px 0;
+            }
+            h4 {
+                font-size: 28px;
+                line-height: 30px;
+                margin-bottom: 20px;
+            }
+
+            ul {
+                list-style: none;
+
+                li {
+                    margin: 10px 0;
+                }
+            }
+        }
+        .img-border {
+            margin: 0 auto;
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid $pm-color;
+            box-shadow: 0 0 20px $pm-color;
+
+            img {
+                position: relative;
+                top: -50px;
+            }
+        }
+        .nq-info {
+            margin-bottom: 30px;
+            .hello {
+                max-width: 300px;
+                background-color: $pm-color;
+                padding: 10px 50px;
+                border-radius: 20px 20px 20px 0px;
+                position: relative;
+                font-size: 18px;
+                letter-spacing: 2px;
+                margin-bottom: 30px;
+                margin-left: 60px;
+                text-align: center;
+                &::after {
+                    content: "";
+                    width: 20px;
+                    height: 40px;
+                    background-color: transparent;
+                    border-top-left-radius: 50px;
+                    box-shadow: 0px -22px 0 $pm-color;
+                    position: absolute;
+                    bottom: -40px;
+                    left: 0px;
+                }
+            }
+        }
+    }
+    .nq-about {
+        .nq-desc {
+            @include fadeinup(2, 0.19s);
+            text-align: center;
+            .p-5 {
+                padding: 10px !important;
+            }
+        }
+        h1.title {
+            font-size: 2em;
+        }
+        .lets-chat {
+            .outline-btn {
+                border: 1px solid $pm-color;
+                padding: 10px 20px;
+                border-radius: 50px;
+                width: 80%;
+                display: block;
+                margin: auto;
+                i {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .carousel {
+            .carousel-inner {
+                min-height: 310px;
+            }
+
+            .bi-chevron-left,
+            .bi-chevron-right {
+                color: lighten($pm-color, 5);
+                font-size: 3em;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .bi-chevron-left {
+                left: -10px;
+            }
+            .bi-chevron-right {
+                right: -10px;
+            }
+        }
+    }
+}
+@media (min-width: 450px) {
+    .nq-home {
+        .home-row {
+            width: 80%;
+            margin: auto;
+        }
+        .nq-info {
+            margin-bottom: 30px;
+            .hello {
+                margin-left: 100px;
+            }
+        }
+    }
+}
+@media (min-width: 600px) {
+    .nq-about {
+        .nq-desc {
+            text-align: center;
+            div.p-5 {
+                padding: 3rem !important;
+                text-align: left;
+            }
+        }
+    }
+}
+@media (min-width: 700px) {
+    .nq-home {
+        .home-row {
+            width: 100%;
+        }
+        .img-border {
+            width: 300px;
+            height: 300px;
+        }
+        .header-info {
+            h2 {
+                font-size: 50px;
+            }
+        }
+        .nq-info {
+            .hello {
+                margin-left: 200px;
+            }
+        }
+    }
+    .nq-about {
+        margin-top: 40px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        .nq-desc {
+            padding: 50px;
+            padding-top: 0px;
+        }
+        .lets-chat {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .outline-btn {
+                display: inline-block;
+                width: auto;
+                margin: unset;
+            }
+            p {
+                margin: 0px;
+            }
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .carousel-inner
+        .active.col-md-6.carousel-item
+        + .carousel-item
+        + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%; /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+@media (min-width: 768px) {
+    /* Show 3rd slide on sm if col-sm-6*/
+
+    .carousel-item {
+        margin-right: 0;
+        width: calc(100% / 2);
+    }
+    /* show 2nd item */
+    .carousel-inner .active + .carousel-item {
+        display: block;
+    }
+    .carousel-inner
+        .carousel-item.active:not(.carousel-item-end):not(.carousel-item-start),
+    .carousel-inner
+        .carousel-item.active:not(.carousel-item-end):not(.carousel-item-start)
+        + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .active.carousel-item-start + .carousel-item-next.carousel-item-start,
+    .carousel-item-next.carousel-item-start + .carousel-item,
+    .carousel-item-next.carousel-item-start + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* farthest right hidden item must be also positioned for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-end {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .active.carousel-item-end + .carousel-item-prev.carousel-item-end,
+    .carousel-item-prev.carousel-item-end + .carousel-item,
+    .carousel-item-prev.carousel-item-end + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+
+/* LG */
+@media (min-width: 991px) {
+    /* Show 4th slide on md if col-md-4*/
+    .carousel-item {
+        width: calc(100% / 3);
+    }
+    .carousel-inner
+        .active.col-lg-4.carousel-item
+        + .carousel-item
+        + .carousel-item
+        + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%; /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* show 3th item */
+    .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner
+        .carousel-item.active:not(.carousel-item-end):not(.carousel-item-start)
+        + .carousel-item
+        + .carousel-item {
+        transition: none;
+    }
+
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-start
+        + .carousel-item
+        + .carousel-item
+        + .carousel-item
+        + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction //t - previous slide direction last item animation fix */
+    .carousel-item-prev.carousel-item-end
+        + .carousel-item
+        + .carousel-item
+        + .carousel-item
+        + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 1000px) {
+    .nq-home {
+        .img-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .nq-about {
+        padding-bottom: 50px !important;
+        .nq-desc {
+            padding: unset;
+            padding-right: 1.5rem;
+            padding-left: 1.5rem;
+            div.py-5 {
+                padding: 4rem !important;
+            }
+        }
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+    // .nq-home {
+    //     .home-row {
+    //         width: 70%;
+    //     }
+    // }
+}
+@media (min-width: 350px) {
+    // .nq-home,
+    // .nq-about,
+    // .nq-skills,
+    // .nq-portfolio,
+    // .nq-contact {
+    //     // h1 {
+    //     //     font-size: 1.5rem;
+    //     // }
+    // }
+    .nq-skills {
+        .status {
+            display: none;
+        }
+        .skills {
+            padding-left: 0;
+
+            li.list-group-item {
+                margin-top: 30px;
+                div::after {
+                    content: "";
+                    width: 100%;
+                    height: 20px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    border: 1px solid $skillColor;
+                }
+                span.tech {
+                    top: -15px;
+                    left: 0;
+                }
+            }
+        }
+
+        .pro-skills {
+            ul {
+                padding: 0;
+                padding-top: 20px;
+                li {
+                    flex-direction: column !important;
+                    h6,
+                    .rank {
+                        margin-top: 20px;
+                    }
+                    .rank {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+    // .nq-about {
+    //     // .nq-desc {
+    //     //     div.px-5 {
+    //     //         padding: 20px 0 !important;
+    //     //     }
+
+    //     //     .lets-chat {
+    //     //         p,
+    //     //         a {
+    //     //             display: block;
+    //     //         }
+    //     //         a .icon-btn {
+    //     //             width: 100%;
+    //     //             padding: 10px 0 !important;
+    //     //         }
+    //     //         .icon-btn div {
+    //     //             display: none;
+    //     //         }
+    //     //     }
+    //     // }
+    //     // .carousel {
+    //     //     .carousel-control-next,
+    //     //     .carousel-control-prev {
+    //     //         font-size: 10px;
+    //     //     }
+    //     //     .carousel-control-next {
+    //     //         right: -20px;
+    //     //     }
+    //     //     .carousel-control-prev {
+    //     //         left: -20px;
+    //     //     }
+    //     // }
+    // }
+
+    .nq-portfolio {
+        .project {
+            .proj-detail div {
+                flex-direction: column !important;
+                a {
+                    margin: 0 50px;
+                    margin-bottom: 20px;
+                    padding: 0 10px;
+                    .icon-btn {
+                        div {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .proj-detail + div div {
+                padding-left: 15px !important;
+            }
+        }
+    }
+
+    footer div {
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column !important;
+        ul {
+            text-align: center;
+            order: 1;
+        }
+        p {
+            text-align: center;
+            order: 2;
+        }
+    }
+}
