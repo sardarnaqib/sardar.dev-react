@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 const StyledToast = styled.div`
@@ -31,8 +32,9 @@ const StyledToast = styled.div`
     }
 `;
 
-export const widthToast = (Toast) => {
+export const withToast = (Toast) => {
     return (props) => {
+        const { t } = useTranslation();
         const [open, setOpen] = React.useState(false);
         const [message, setMessage] = useState("I'm a custom snackbar");
         const [duration, setDuration] = useState(2000);
@@ -78,7 +80,7 @@ export const widthToast = (Toast) => {
                         aria-atomic="true"
                     >
                         <div className="toast-header">
-                            <small>Just now</small>
+                            <small>{t("toast.time")}</small>
                             <button
                                 type="button"
                                 className="bi bi-x"

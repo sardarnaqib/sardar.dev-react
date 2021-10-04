@@ -79,5 +79,8 @@
             "email_send_success": "Votre message a été envoyé avec succès, je vous répondrai très bientôt.",
             "button_text": "Envoyer"
         }
+    },
+    "toast": {
+        "time": "Juste maintenant"
     }
 }

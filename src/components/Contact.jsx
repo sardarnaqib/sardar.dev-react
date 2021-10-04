@@ -3,7 +3,7 @@ import { withTranslation } from "react-i18next";
 import styled from "styled-components";
 import { StyledAnchor } from "./Header";
 import Skeleton from "./Skeleton";
-import { widthToast } from "./Toast";
+import { withToast } from "./Toast";
 
 function validateEmail(email) {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -91,7 +91,7 @@ const Contact = ({ add_to_ref: addToRef, t, tReady, ...props }) => {
             setFormSubmitting(false);
             return false;
         } else {
-            let url = "http://localhost:8000/contact.php";
+            let url = "./contact.php";
             fetch(url, {
                 method: "POST",
                 body: JSON.stringify(form),
@@ -385,4 +385,4 @@ const Contact = ({ add_to_ref: addToRef, t, tReady, ...props }) => {
     );
 };
 
-export default withTranslation()(widthToast(Contact));
+export default withTranslation()(withToast(Contact));

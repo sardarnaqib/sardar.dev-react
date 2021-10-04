@@ -1,10 +1,10 @@
 <?php
 
-header('Access-Control-Allow-Origin: *'); 
-header("Access-Control-Allow-Credentials: true");
-header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-header('Access-Control-Max-Age: 1000');
-header('Access-Control-Allow-Headers: *');
+// header('Access-Control-Allow-Origin: *'); 
+// header("Access-Control-Allow-Credentials: true");
+// header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+// header('Access-Control-Max-Age: 1000');
+// header('Access-Control-Allow-Headers: *');
 
 // ini_set("SMTP", "localhost");
 // ini_set("smtp_port", "1025");
