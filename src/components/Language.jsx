@@ -4,8 +4,8 @@ import { withTranslation } from "react-i18next";
 import i18next from "i18next";
 
 const languages = [
-    { code: "fr", name: "Français", country_code: "fr" },
     { code: "en", name: "English", country_code: "gb" },
+    { code: "fr", name: "Français", country_code: "fr" },
 ];
 export function getCookie(name) {
     const value = `; ${document.cookie}`;

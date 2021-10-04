@@ -12,7 +12,10 @@ const Tech = styled.li`
     margin-right: 10px;
     border-radius: 15px;
     font-size: 16px;
-    background-color: ${(props) => props.theme.skillColor};
+    background-color: ${(props) => {
+        // @ts-ignore
+        return props.theme.skillColor;
+    }};
 `;
 const StyledProject = styled.div`
     position: relative;
