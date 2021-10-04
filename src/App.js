@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./scss/App.scss";
 import Header from "./components/Header";
 import styled, { ThemeProvider } from "styled-components";
@@ -9,7 +9,6 @@ import Skills from "./components/Skills";
 import Portfolio from "./components/Portfolio";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import { Suspense } from "react";
 import { getCookie } from "./components/Language";
 
 const StyledApp = styled.div`
@@ -70,7 +69,7 @@ function App() {
         sections.current.forEach((section) => {
             sectionObserver.observe(section);
         });
-    }, []);
+    }, [theme]);
     // function validateEmail(email) {
     //     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     //     return re.test(String(email).toLowerCase());

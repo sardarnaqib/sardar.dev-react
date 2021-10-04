@@ -6,8 +6,8 @@ header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 header('Access-Control-Max-Age: 1000');
 header('Access-Control-Allow-Headers: *');
 
-ini_set("SMTP", "localhost");
-ini_set("smtp_port", "1025");
+// ini_set("SMTP", "localhost");
+// ini_set("smtp_port", "1025");
 
 function sanitize($data) {
   return filter_var($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -56,7 +56,7 @@ function sanitize($data) {
   
           // return;
       if(mail($to, $subject, $message, $headers)) {
-        $success['emailSended'] = "Your message is send with success. I will get back to very soon!";
+        $success['emailSended'] = "Your message is send with success. I will get back to you very soon!";
       }else {
         $error['messageFailed'] = "Failed to send message. Please try later";
       }

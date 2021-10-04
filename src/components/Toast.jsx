@@ -64,7 +64,13 @@ export const widthToast = (Toast) => {
         return (
             <>
                 <Toast {...props} toastShowMessage={showMessage} />
-                <div className="toast-container position-absolute p-3 bottom-0 end-0">
+                <div
+                    className="toast-container position-absolute p-3"
+                    style={{
+                        bottom: "40px",
+                        right: 0,
+                    }}
+                >
                     <StyledToast
                         className={`toast ${severity} ${open ? "show" : ""}`}
                         role="alert"

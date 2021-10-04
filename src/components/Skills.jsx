@@ -2,7 +2,39 @@ import React, { useEffect, useRef } from "react";
 import { withTranslation } from "react-i18next";
 import styled, { useTheme } from "styled-components";
 import Skeleton from "./Skeleton";
-
+const StyledLine = styled.div`
+    width: 100%;
+    height: 2px;
+    background-color: ${(props) => props.theme.menuColor};
+    margin-top: 5px;
+    position: relative;
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: ${(props) => props["data-width"]};
+        height: 10px;
+        background-color: #43ab92;
+        border-radius: 5px;
+    }
+`;
+const StyledListGroupItem = styled.div`
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${(props) => props.theme.color};
+    & > div.percentage {
+    }
+    & > div.tech-line-holder {
+        width: calc(100% - 20px);
+        margin-left: 20px;
+        height: 50px;
+    }
+`;
 const Skills = ({ add_to_ref: addToRef, t, tReady }) => {
     const rank = useRef([]);
     const theme = useTheme();
@@ -20,39 +52,6 @@ const Skills = ({ add_to_ref: addToRef, t, tReady }) => {
         { id: 11, width: "75%", text: "MySql" },
         { id: 12, width: "75%", text: "Git" },
     ];
-    const StyledLine = styled.div`
-        width: 100%;
-        height: 2px;
-        background-color: ${(props) => props.theme.menuColor};
-        margin-top: 5px;
-        position: relative;
-        &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: ${(props) => props.width};
-            height: 10px;
-            background-color: #43ab92;
-            border-radius: 5px;
-        }
-    `;
-    const StyledListGroupItem = styled.div`
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: ${(props) => props.theme.color};
-        & > div.percentage {
-        }
-        & > div.tech-line-holder {
-            width: calc(100% - 20px);
-            margin-left: 20px;
-            height: 50px;
-        }
-    `;
 
     useEffect(() => {
         rank.current.forEach((element) => {
@@ -107,7 +106,7 @@ const Skills = ({ add_to_ref: addToRef, t, tReady }) => {
                                                 {skill.text}
                                             </span>
                                             <StyledLine
-                                                width={skill.width}
+                                                data-width={skill.width}
                                             ></StyledLine>
                                         </div>
                                     </StyledListGroupItem>
@@ -186,24 +185,25 @@ const Skills = ({ add_to_ref: addToRef, t, tReady }) => {
     );
 };
 export default withTranslation()(Skills);
-
+const StyledRank = styled.div`
+    & > span {
+        width: 15px;
+        height: 15px;
+        border-radius: 30px;
+        margin-right: 5px;
+        background-color: ${(props) => props.theme.menuColor};
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
+    & span.rank-bg {
+        background-color: ${(props) => {
+            // @ts-ignore
+            return props.theme.skillColor;
+        }};
+    }
+`;
 const Rank = ({ custom_ref: customRef, rank_number: rankNumber }) => {
-    const StyledRank = styled.div`
-        & > span {
-            width: 15px;
-            height: 15px;
-            border-radius: 30px;
-            margin-right: 5px;
-            background-color: ${(props) => props.theme.menuColor};
-            &:last-child {
-                margin-right: 0px;
-            }
-        }
-        & span.rank-bg {
-            background-color: ${(props) => props.theme.skillColor};
-        }
-    `;
-
     return (
         <StyledRank
             className="d-flex flex-row justify-content-end"

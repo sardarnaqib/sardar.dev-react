@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { withTranslation } from "react-i18next";
 import i18next from "i18next";
@@ -16,46 +16,41 @@ export function getCookie(name) {
             .split(";")
             .shift();
 }
+const LngButton = styled.button`
+    background: #ff6f61;
+    color: ${(props) => props.theme.color};
+    z-index: 1;
+    &:after {
+        margin-left: 20px;
+    }
+    &:hover {
+        color: ${(props) => props.theme.color};
+    }
+`;
+const Menu = styled.ul`
+    min-width: 9.1rem;
+    background-color: #ff867a;
+    li {
+        padding: 5px 10px;
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        button {
+            color: ${(props) => props.theme.color};
+            &:hover {
+                background: none;
+            }
+            &:disabled {
+                color: ${(props) => props.theme.color};
+                opacity: 0.5;
+            }
+        }
+    }
+`;
 
 const Language = ({ t, tReady }) => {
     const currentLanguageCode = getCookie("i18next") || "en";
-    const currentLanguage = languages.find(
-        (l) => l.code === currentLanguageCode
-    );
-    useEffect(() => {
-        document.title = t("app_title");
-    }, [currentLanguage, t]);
-    const LngButton = styled.button`
-        background: #ff6f61;
-        color: ${(props) => props.theme.color};
-        z-index: 1;
-        &:after {
-            margin-left: 20px;
-        }
-        &:hover {
-            color: ${(props) => props.theme.color};
-        }
-    `;
-    const Menu = styled.ul`
-        min-width: 9.1rem;
-        background-color: #ff867a;
-        li {
-            padding: 5px 10px;
-            &:hover {
-                background: rgba(255, 255, 255, 0.2);
-            }
-            button {
-                color: ${(props) => props.theme.color};
-                &:hover {
-                    background: none;
-                }
-                &:disabled {
-                    color: ${(props) => props.theme.color};
-                    opacity: 0.5;
-                }
-            }
-        }
-    `;
+
     return (
         <>
             <div className="btn-group mx-2">

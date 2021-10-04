@@ -75,6 +75,8 @@
             "last_name_error": "Le nom est requis!",
             "email_error": "L'e-mail est requis!",
             "message_error": "Le message est requis!",
+            "email_send_error": "Oups! quelque chose s'est mal passé merci de réessayez plus tard",
+            "email_send_success": "Votre message a été envoyé avec succès, je vous répondrai très bientôt.",
             "button_text": "Envoyer"
         }
     }

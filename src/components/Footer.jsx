@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { StyledAnchor } from "./Header";
-
+const Icon = styled.i`
+    font-size: 2em;
+`;
 export default function Footer() {
-    const Icon = styled.i`
-        font-size: 2em;
-    `;
     return (
         <footer>
             <div className="container d-flex justify-content-between">

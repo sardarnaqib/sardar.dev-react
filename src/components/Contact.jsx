@@ -13,19 +13,30 @@ const InvalidMessage = styled.div`
     font-size: 14px;
     color: #8a8a8a;
     &.error {
-        color: ${(props) => props.theme.error};
+        color: ${(props) => {
+            // @ts-ignore
+            return props.theme.error;
+        }};
     }
 `;
 const StyledInput = styled.input`
     border: 2px solid #ced4da;
     &.is-invalid {
-        border: 2px solid ${(props) => props.theme.error};
+        border: 2px solid
+            ${(props) => {
+                // @ts-ignore
+                return props.theme.error;
+            }};
     }
 `;
 const StyledTextArea = styled.textarea`
     border: 2px solid #ced4da;
     &.is-invalid {
-        border: 2px solid ${(props) => props.theme.error};
+        border: 2px solid
+            ${(props) => {
+                // @ts-ignore
+                return props.theme.error;
+            }};
     }
 `;
 
@@ -87,7 +98,19 @@ const Contact = ({ add_to_ref: addToRef, t, tReady, ...props }) => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    props.toastShowMessage(data.emailSended, "success", 3000);
+                    if (!data.emailSended) {
+                        props.toastShowMessage(
+                            t("contact_me.helper_text.email_send_error"),
+                            "error",
+                            5000
+                        );
+                    } else {
+                        props.toastShowMessage(
+                            t("contact_me.helper_text.email_send_success"),
+                            "success",
+                            5000
+                        );
+                    }
                     setForm({
                         firstName: "",
                         lastName: "",
@@ -99,9 +122,9 @@ const Contact = ({ add_to_ref: addToRef, t, tReady, ...props }) => {
                 .catch((error) => {
                     console.log(error);
                     props.toastShowMessage(
-                        "Oops something went wrong try later!",
+                        t("contact_me.helper_text.email_send_error"),
                         "error",
-                        3000
+                        5000
                     );
                     setForm({
                         firstName: "",

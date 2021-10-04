@@ -27,10 +27,13 @@ export const StyledAnchor = styled.a`
 const StyleHeader = styled.header`
     background: ${(props) => props.theme.body};
 `;
+const Icon = styled.i`
+    font-size: 1.3em;
+`;
 
 // add scroll event listener
 
-const Header = ({ toggle_button: themeToggle, theme, t, tReady }) => {
+const Header = ({ toggle_button: themeToggle, theme }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     function scrollPos(maxScrollPos) {
         let scrollPos = document.documentElement.scrollTop;
@@ -43,9 +46,7 @@ const Header = ({ toggle_button: themeToggle, theme, t, tReady }) => {
     window.addEventListener("scroll", (event) => {
         scrollPos(100);
     });
-    const Icon = styled.i`
-        font-size: 1.3em;
-    `;
+
     return (
         <StyleHeader
             className={`nq-header pt-3 pb-3 fixed-top ${
