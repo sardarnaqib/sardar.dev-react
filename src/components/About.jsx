@@ -1,49 +1,64 @@
 import React from "react";
 import CarouselHolder from "./CarouselHolder";
 import { StyledAnchor } from "./Header";
+import { withTranslation } from "react-i18next";
+import Skeleton from "./Skeleton";
 
-export default function About({ add_to_ref: addToRef }) {
-    const programerImage = process.env.PUBLIC_URL + "/programmer.png";
+const About = ({ add_to_ref: addToRef, t, tReady }) => {
+    const programerImage = process.env.PUBLIC_URL + "/programmer1.png";
     return (
         <section className="nq-about pb-4" id="nq-about">
             <div className="container">
-                <div className="row py-5">
+                <div className="row ">
                     <div className="w-100 py-3 text-center p-relative">
                         <h1 className="title text-uppercase p-relative">
-                            About me
+                            {!tReady ? (
+                                <Skeleton
+                                    width="200px"
+                                    height="40px"
+                                    style={{ margin: "auto" }}
+                                />
+                            ) : (
+                                t("about.about_me")
+                            )}
                         </h1>
                     </div>
                     <div className="col-12 col-md-12 col-lg-6 nq-desc">
                         <div ref={addToRef} className="p-5 animated">
-                            <p className="pfont-size">
-                                Hello, I'm SARDAR KHAN a{" "}
-                                <strong>
-                                    Full-stack Web developer / Reactjs / Symfony
-                                    4+ / Api-platform
-                                </strong>{" "}
-                                who specializes in creating dynamic and
-                                beautiful web pages.
-                            </p>
-                            <p className="pfont-size">
-                                I have been in the field for nearly 2+ years,
-                                and have been loving every minute of it. I am a
-                                researcher, entrepreneur, developer and over all
-                                problem solver. Check out some of my work below
-                                to see what I’ve been up to lately.
-                            </p>
-                        </div>
-                        <div
-                            ref={addToRef}
-                            className="w-100 lets-chat py-2 animated"
-                        >
-                            <p>Lets have a quick chat</p>
-                            <StyledAnchor
-                                href="mailto:"
-                                className="outline-btn"
-                            >
-                                <i className="bi bi-envelope-fill"></i>
-                                <span>Email</span>
-                            </StyledAnchor>
+                            {!tReady ? (
+                                <>
+                                    {[...Array(7)].map((_, index) => {
+                                        return (
+                                            <Skeleton
+                                                key={index}
+                                                width={
+                                                    index === 2 || index === 4
+                                                        ? "50%"
+                                                        : "100%"
+                                                }
+                                                height="10px"
+                                                style={{
+                                                    marginBottom: "10px",
+                                                }}
+                                            />
+                                        );
+                                    })}
+                                </>
+                            ) : (
+                                <>
+                                    <p className="pfont-size">
+                                        {t("hello_iam")} SARDAR KHAN
+                                        <strong>
+                                            {" "}
+                                            {t("web_developer")}
+                                        </strong>{" "}
+                                        {t("about.about_me_bio.line1")}
+                                    </p>
+                                    <p className="pfont-size">
+                                        {t("about.about_me_bio.line2")}
+                                    </p>
+                                </>
+                            )}
                         </div>
                     </div>
                     <div className="col-12 col-md-12 col-lg-6 nq-image">
@@ -57,9 +72,21 @@ export default function About({ add_to_ref: addToRef }) {
                     </div>
                 </div>
             </div>
+            <div ref={addToRef} className="container lets-chat pb-3 animated">
+                {!tReady ? (
+                    <Skeleton width="50%" height="10px" />
+                ) : (
+                    <p>{t("about.lets_have_chat")}</p>
+                )}
+                <StyledAnchor href="mailto:" className="outline-btn">
+                    <i className="bi bi-envelope-fill"></i>
+                    <span>Email</span>
+                </StyledAnchor>
+            </div>
             <div ref={addToRef} className="container animated">
                 <CarouselHolder />
             </div>
         </section>
     );
-}
+};
+export default withTranslation()(About);

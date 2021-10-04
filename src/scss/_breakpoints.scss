@@ -1,7 +1,32 @@
 @media (min-width: 300px) {
     .nq-header {
-        .form-check-label {
-            margin-left: 20px;
+        border-bottom: 2px solid transparent;
+        .nq-nav {
+            width: 100%;
+        }
+        .navbar-nav {
+            li {
+                margin: 0 20px;
+                border-bottom: 3px solid transparent;
+                a.nav-link {
+                    // color: #fff;
+                    line-height: 30px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    font-family: "roboto", sans-serif;
+                    padding-right: 0;
+                    padding-left: 0;
+                    &:hover {
+                        color: $pm-color;
+                        transition: all 0.2s ease;
+                    }
+                }
+            }
+            li.nav-item.active {
+                padding-right: 0;
+                padding-left: 0;
+                border-color: $pm-color;
+            }
         }
     }
     .nq-home {
@@ -84,12 +109,15 @@
         }
         .nq-info {
             margin-bottom: 30px;
+            padding-top: 30px;
             .hello {
                 max-width: 300px;
                 background-color: $pm-color;
                 padding: 10px 50px;
                 border-radius: 20px 20px 20px 0px;
-                position: relative;
+                position: absolute;
+                right: 20px;
+                top: -30px;
                 font-size: 18px;
                 letter-spacing: 2px;
                 margin-bottom: 30px;
@@ -140,7 +168,7 @@
 
             .bi-chevron-left,
             .bi-chevron-right {
-                color: lighten($pm-color, 5);
+                color: $pm-color; //lighten($pm-color, 10);
                 font-size: 3em;
                 position: absolute;
                 top: 50%;
@@ -154,6 +182,124 @@
             }
         }
     }
+    .nq-skills {
+        .skills .list-group-item {
+            border: none;
+            background: none;
+            @include fadeinup(8, 0.3s);
+        }
+        .status {
+            padding-top: 30px;
+            display: flex;
+            padding-left: 50px;
+            justify-content: space-evenly;
+        }
+
+        .pro-skills {
+            ul {
+                padding-top: 70px;
+                li {
+                    width: 100%;
+                    padding: 10px 0;
+                    height: auto;
+                    list-style: none;
+
+                    h6,
+                    div {
+                        margin-bottom: 0;
+                        font-size: 18px;
+                        letter-spacing: 1.4px;
+                    }
+                    .rank {
+                        margin-left: 30px;
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+    .nq-portfolio {
+        .proj-header {
+            display: block;
+            margin: auto;
+
+            a {
+                display: block;
+                margin-bottom: 15px;
+                &:first-child {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+        img {
+            border-radius: 10px;
+        }
+        .proj-detail {
+            text-align: center;
+            .tech_skeleton {
+                margin: auto;
+            }
+            a {
+                h3 {
+                    position: relative;
+                    padding-bottom: 10px;
+                    display: inline;
+                    &::before {
+                        content: "";
+                        width: 0%;
+                        height: 2px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background-color: $pm-color;
+                        transition: width 0.1s linear;
+                    }
+                }
+                &:hover h3::before {
+                    content: "";
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .nq-contact {
+        padding-bottom: 50px;
+        .title {
+            @include fadeinup(1, 0.2s);
+        }
+        form {
+            @include fadeinup(4, 0.2s);
+            .form-row {
+                margin-bottom: 1rem;
+            }
+        }
+        .col-md-5 div.px-3 {
+            @include fadeinup(2, 0.2s);
+        }
+        form input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            background-color: $pm-color;
+            color: #fff;
+            border: none;
+            font-size: 20px;
+            border-radius: 25px;
+        }
+
+        .icon-holder {
+            width: 100%;
+            height: 70px;
+            border-bottom: 1px solid $pm-color;
+
+            i,
+            a {
+                font-size: 20px;
+                line-height: 20px;
+            }
+        }
+    }
 }
 @media (min-width: 450px) {
     .nq-home {
@@ -163,13 +309,13 @@
         }
         .nq-info {
             margin-bottom: 30px;
-            .hello {
-                margin-left: 100px;
-            }
         }
     }
 }
 @media (min-width: 600px) {
+    .container {
+        max-width: 90%;
+    }
     .nq-about {
         .nq-desc {
             text-align: center;
@@ -194,20 +340,10 @@
                 font-size: 50px;
             }
         }
-        .nq-info {
-            .hello {
-                margin-left: 200px;
-            }
-        }
     }
     .nq-about {
-        margin-top: 40px;
         padding-top: 40px;
         padding-bottom: 40px;
-        .nq-desc {
-            padding: 50px;
-            padding-top: 0px;
-        }
         .lets-chat {
             display: flex;
             flex-direction: row;
@@ -237,10 +373,8 @@
         visibility: visible;
     }
 }
-
 @media (min-width: 768px) {
     /* Show 3rd slide on sm if col-sm-6*/
-
     .carousel-item {
         margin-right: 0;
         width: calc(100% / 2);
@@ -288,8 +422,7 @@
         visibility: visible;
     }
 }
-
-/* LG */
+/* LG  for carousel only*/
 @media (min-width: 991px) {
     /* Show 4th slide on md if col-md-4*/
     .carousel-item {
@@ -360,138 +493,39 @@
             }
         }
     }
+    .nq-portfolio {
+        .proj-detail {
+            text-align: left;
+            .tech_skeleton {
+                margin: unset;
+            }
+            a {
+                h3 {
+                    position: relative;
+                    padding-bottom: 10px;
+                    display: inline;
+                    &::before {
+                        content: "";
+                        width: 0%;
+                        height: 2px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background-color: $pm-color;
+                        transition: width 0.1s linear;
+                    }
+                }
+                &:hover h3::before {
+                    content: "";
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 @media (min-width: 1200px) {
     .container {
         max-width: 1200px;
-    }
-    // .nq-home {
-    //     .home-row {
-    //         width: 70%;
-    //     }
-    // }
-}
-@media (min-width: 350px) {
-    // .nq-home,
-    // .nq-about,
-    // .nq-skills,
-    // .nq-portfolio,
-    // .nq-contact {
-    //     // h1 {
-    //     //     font-size: 1.5rem;
-    //     // }
-    // }
-    .nq-skills {
-        .status {
-            display: none;
-        }
-        .skills {
-            padding-left: 0;
-
-            li.list-group-item {
-                margin-top: 30px;
-                div::after {
-                    content: "";
-                    width: 100%;
-                    height: 20px;
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    border-top-right-radius: 10px;
-                    border-bottom-right-radius: 10px;
-                    border: 1px solid $skillColor;
-                }
-                span.tech {
-                    top: -15px;
-                    left: 0;
-                }
-            }
-        }
-
-        .pro-skills {
-            ul {
-                padding: 0;
-                padding-top: 20px;
-                li {
-                    flex-direction: column !important;
-                    h6,
-                    .rank {
-                        margin-top: 20px;
-                    }
-                    .rank {
-                        margin-left: 0;
-                    }
-                }
-            }
-        }
-    }
-    // .nq-about {
-    //     // .nq-desc {
-    //     //     div.px-5 {
-    //     //         padding: 20px 0 !important;
-    //     //     }
-
-    //     //     .lets-chat {
-    //     //         p,
-    //     //         a {
-    //     //             display: block;
-    //     //         }
-    //     //         a .icon-btn {
-    //     //             width: 100%;
-    //     //             padding: 10px 0 !important;
-    //     //         }
-    //     //         .icon-btn div {
-    //     //             display: none;
-    //     //         }
-    //     //     }
-    //     // }
-    //     // .carousel {
-    //     //     .carousel-control-next,
-    //     //     .carousel-control-prev {
-    //     //         font-size: 10px;
-    //     //     }
-    //     //     .carousel-control-next {
-    //     //         right: -20px;
-    //     //     }
-    //     //     .carousel-control-prev {
-    //     //         left: -20px;
-    //     //     }
-    //     // }
-    // }
-
-    .nq-portfolio {
-        .project {
-            .proj-detail div {
-                flex-direction: column !important;
-                a {
-                    margin: 0 50px;
-                    margin-bottom: 20px;
-                    padding: 0 10px;
-                    .icon-btn {
-                        div {
-                            display: none;
-                        }
-                    }
-                }
-            }
-
-            .proj-detail + div div {
-                padding-left: 15px !important;
-            }
-        }
-    }
-
-    footer div {
-        flex-wrap: wrap;
-        justify-content: center;
-        flex-direction: column !important;
-        ul {
-            text-align: center;
-            order: 1;
-        }
-        p {
-            text-align: center;
-            order: 2;
-        }
     }
 }

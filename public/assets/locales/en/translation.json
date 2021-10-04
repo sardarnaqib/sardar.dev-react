@@ -1,0 +1,81 @@
+{
+    "config": {
+        "language": "Select Language"
+    },
+    "hello_iam": "Hello I'm",
+    "web_developer": "Full Stack web developer / Reactjs / Symfony 4+ / Api-platform",
+    "about": {
+        "about_me": "About me",
+        "a": "a",
+        "about_me_bio": {
+            "line1": "who specializes in creating dynamic and beautiful web pages.",
+            "line2": "I have been in the field for nearly 2+ years, and have been loving every minute of it. I am a researcher, entrepreneur, developer and over all problem solver. Check out some of my work below to see what I’ve been up to lately."
+        },
+        "lets_have_chat": "Lets have a quick chat"
+    },
+    "what_i_do": {
+        "can_do": [
+            {
+                "title": "Design + Development",
+                "description": "Clean, modern designs - optimized for performance, and converting users to customers."
+            },
+            {
+                "title": "Ecommerce",
+                "description": "Integration of eCommerce platforms, payment gateways, custom product templates, and more."
+            },
+            {
+                "title": "Analytics",
+                "description": "Get insights into who is browsing your site so that you can make smarter business decisions."
+            },
+            {
+                "title": "Mobile-friendly",
+                "description": "A responsive design makes your website accessible to all users, regardless of their device."
+            },
+            {
+                "title": "Website Audits",
+                "description": "Looking to improve your page performance, or user experience? get in touch."
+            },
+            {
+                "title": "Content managment system",
+                "description": "Want to have CMS Content Management System to create, manage your contents and optimize your customers digital experiance."
+            }
+        ]
+    },
+    "skills": "Skills",
+    "professional_skills": {
+        "title": "Professional skills",
+        "problem_solving": "Problem solving",
+        "communication": "Communication",
+        "creative": "Creative"
+    },
+    "portfolio": {
+        "title": "Portfolio",
+        "tech_used": "Technology used",
+        "project": [
+            {
+                "description": "Restaurant Istanbul is Fast Food restaurant specialised in Turkish Doner Kebab."
+            },
+            {
+                "description": "BeSound is a Landing page which was a challenge from FreeCodeCamp.org to create responsive web design. It is not me who created the design but i changed a PSD file to html css"
+            }
+        ]
+    },
+    "contact_me": {
+        "title": "Contact me",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "email": "Email",
+        "helper_text": {
+            "first_name": "Please write your first name.",
+            "last_name": "Please write your last name.",
+            "email": "Please write your email.",
+            "message": "Please write a message.",
+            "message_place_holder": "Leave a comment here",
+            "first_name_error": "First name is required!",
+            "last_name_error": "Last name is required!",
+            "email_error": "Email is required!",
+            "message_error": "Message is required!",
+            "button_text": "Send"
+        }
+    }
+}

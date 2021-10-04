@@ -5,7 +5,12 @@ import styled, { ThemeProvider } from "styled-components";
 import { dark, GlobalStyles, light } from "./theme";
 import Home from "./components/Home";
 import About from "./components/About";
-import ChatBot from "react-simple-chatbot";
+import Skills from "./components/Skills";
+import Portfolio from "./components/Portfolio";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import { Suspense } from "react";
+import { getCookie } from "./components/Language";
 
 const StyledApp = styled.div`
     color: ${(props) => props.theme.color};
@@ -27,26 +32,7 @@ const StyledApp = styled.div`
 //     userBubbleColor: "#fff",
 //     userFontColor: "#4a4a4a",
 // };
-
-// const sections = document.querySelectorAll(".animated");
-// const sectionOptions = {
-//     root: null,
-//     threshold: 0.25,
-//     rootMargin: "-150px",
-// };
-// const sectionObserver = new IntersectionObserver((entries, observer) => {
-//     entries.forEach((entry) => {
-//         if (!entry.isIntersecting) {
-//             return;
-//         } else {
-//             entry.target.classList.add("fadeInUp");
-//         }
-//     });
-// }, sectionOptions);
-// sections.forEach((section) => {
-//     sectionObserver.observe(section);
-// });
-
+// TODO before making it to produce change email settings (headers) in php file
 function App() {
     const sections = useRef([]);
     sections.current = [];
@@ -56,68 +42,39 @@ function App() {
             sections.current.push(el);
         }
     };
-
-    const [theme, setTheme] = React.useState("light");
-    const [contact, setContact] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
+    let currentTheme = getCookie("theme") || "dark";
+    const [theme, setTheme] = React.useState(currentTheme);
     const themeToggler = () => {
+        // set theme cookie to light or dark
+        document.cookie = `theme=${theme === "light" ? "dark" : "light"}`;
         theme === "light" ? setTheme("dark") : setTheme("light");
     };
 
-    function addClassToElement(cls, elem) {
-        let target = document.querySelector(elem);
-        target.classList.add(cls);
-    }
-
-    function removeClassFromElement(cls, elem) {
-        let target = document.querySelector(elem);
-        target.classList.remove(cls);
-    }
-    function scrollPos(maxScrollPos) {
-        let scrollPos = document.documentElement.scrollTop;
-        if (scrollPos >= maxScrollPos) {
-            addClassToElement("glow-shadow", ".nq-header");
-        } else {
-            removeClassFromElement("glow-shadow", ".nq-header");
-        }
-    }
-
     useEffect(() => {
         // add class to all ref elements
+        document.cookie = `theme=${theme}`;
         const sectionOptions = {
             root: null,
             threshold: 0.25,
             rootMargin: "-80px",
         };
-        const sectionObserver = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
-                        entry.target.classList.add("fadeInUp");
-                    }
-                });
-            },
-            sectionOptions
-        );
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add("fadeInUp");
+                }
+            });
+        }, sectionOptions);
         sections.current.forEach((section) => {
             sectionObserver.observe(section);
         });
-
-        // add scroll event listener
-        window.addEventListener("scroll", (event) => {
-            scrollPos(100);
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    function validateEmail(email) {
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
+    // function validateEmail(email) {
+    //     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //     return re.test(String(email).toLowerCase());
+    // }
 
     // const chatBotSteps = [
     //     {
@@ -216,6 +173,10 @@ function App() {
                 <Header toggle_button={themeToggler} theme={theme} />
                 <Home add_to_ref={addToRef} />
                 <About add_to_ref={addToRef} />
+                <Skills add_to_ref={addToRef} />
+                <Portfolio add_to_ref={addToRef} />
+                <Contact add_to_ref={addToRef} />
+                <Footer />
                 {/* <ThemeProvider theme={chatBotTheme}>
                     <StyledChatBot>
                         <ChatBot steps={chatBotSteps} floating />

@@ -1,0 +1,81 @@
+{
+    "config": {
+        "language": "Sélectionner Langue"
+    },
+    "hello_iam": "Bonjour je suis",
+    "web_developer": "Développeur Web Full Stack / Reactjs / Symfony 4+ / Api-platform",
+    "about": {
+        "about_me": "À propos de moi",
+        "a": "un",
+        "about_me_bio": {
+            "line1": "qui est spicialiser dans la création des site internet dynamique et la look agréable.",
+            "line2": "Je suis dans là demain environ deux ans temps partiel et j'ai adoré chaque minute passer dans là domaine de développer web, je suis entrepreneur, développer et surtout je règle des problèmes. Regarder le travail à moi ce que j'ai fait."
+        },
+        "lets_have_chat": "N'hésitez pas à me contacter en cliquant sur le bouton"
+    },
+    "what_i_do": {
+        "can_do": [
+            {
+                "title": "Développement + le désign",
+                "description": "le désign propre et modernes - optimisées pour les performances et la conversion des utilisateurs en clients."
+            },
+            {
+                "title": "Ecommerce",
+                "description": "Intégration de plates-formes de E-Commerce, paiement en ligne, de modèles de produits personnalisés, etc."
+            },
+            {
+                "title": "Analytique",
+                "description": "Obtenez des informations sur qui navigue sur votre site afin que vous puissiez prendre des décisions commerciales plus judicieuses."
+            },
+            {
+                "title": "Adaptable sur mobile",
+                "description": "Un design réactif rend votre site Web accessible à tous les utilisateurs, quel que soit leur appareil."
+            },
+            {
+                "title": "Audits de sites Web",
+                "description": "Vous cherchez à améliorer les performances de votre page ou l'expérience utilisateur? N'hésitez pas à me contacter."
+            },
+            {
+                "title": "Système de gestion de contenu",
+                "description": "Vous souhaitez disposer d'un système de gestion de contenu CMS pour créer, gérer vos contenus et optimiser l'expérience numérique de vos clients."
+            }
+        ]
+    },
+    "skills": "Compétences",
+    "professional_skills": {
+        "title": "Compétences Professionnelles",
+        "problem_solving": "Résolution de problème",
+        "communication": "La communication",
+        "creative": "Créatif"
+    },
+    "portfolio": {
+        "title": "Portofolio",
+        "tech_used": "Technologie utilisée",
+        "project": [
+            {
+                "description": "Restaurant Istanbul est un restaurant Fast Food spécialisé dans le Doner Kebab turc."
+            },
+            {
+                "description": "BeSound est une page d'accueil qui était un challenge de FreeCodeCamp.org pour créer une design site web réactive. Ce n'est pas moi qui ai créé le design mais j'ai changé un fichier PSD en html css."
+            }
+        ]
+    },
+    "contact_me": {
+        "title": "Me contacter",
+        "first_name": "Prénom",
+        "last_name": "Nom",
+        "email": "E-mail",
+        "helper_text": {
+            "first_name": "Veuillez écrire votre prénom.",
+            "last_name": "Veuillez écrire votre nom.",
+            "email": "Veuillez écrire votre e-mail.",
+            "message": "Veuillez écrire votre message.",
+            "message_place_holder": "Laissez un commentaire ici",
+            "first_name_error": "Le prénom est requis!",
+            "last_name_error": "Le nom est requis!",
+            "email_error": "L'e-mail est requis!",
+            "message_error": "Le message est requis!",
+            "button_text": "Envoyer"
+        }
+    }
+}

@@ -1,7 +1,9 @@
 import React from "react";
 import { StyledAnchor } from "./Header";
+import { withTranslation } from "react-i18next";
+import Skeleton from "./Skeleton";
 
-const Home = ({ add_to_ref: addToRef }) => {
+const Home = ({ t, tReady, add_to_ref: addToRef }) => {
     const profileImage = process.env.PUBLIC_URL + "/nq-image.jpeg";
     return (
         <section className="nq-home" id="nq-home">
@@ -21,18 +23,35 @@ const Home = ({ add_to_ref: addToRef }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-lg-6">
+                    <div className="col-12 col-lg-6 mt-5">
                         <div className="header-info">
                             <div ref={addToRef} className="nq-info animated">
                                 <div className="hello">
-                                    <span>Hello I'm</span>
+                                    <span>
+                                        {!tReady ? (
+                                            <Skeleton
+                                                width="100px"
+                                                height="20px"
+                                            />
+                                        ) : (
+                                            t("hello_iam")
+                                        )}
+                                    </span>
                                 </div>
                             </div>
                             <h2 ref={addToRef} className="animated">
                                 Sardar Khan Naqib
                             </h2>
                             <h4 ref={addToRef} className="animated">
-                                Full Stack Web Developer
+                                {!tReady ? (
+                                    <Skeleton
+                                        width="80%"
+                                        height="30px"
+                                        style={{ margin: "auto" }}
+                                    />
+                                ) : (
+                                    t("web_developer")
+                                )}
                             </h4>
                             <ul
                                 ref={addToRef}
@@ -54,7 +73,7 @@ const Home = ({ add_to_ref: addToRef }) => {
                                         target="_blank"
                                         href=" http://maps.google.com/?q=8 allee des irlandais 91300 Massy France"
                                     >
-                                        8 allee des irlandais 91300 Massy France
+                                        Massy, France
                                     </StyledAnchor>
                                 </li>
                             </ul>
@@ -76,15 +95,6 @@ const Home = ({ add_to_ref: addToRef }) => {
                                         <i className="bi bi-github"></i>
                                     </StyledAnchor>
                                 </li>
-                                {/* <li className="list-inline-item">
-                                    <StyledAnchor
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        href="https://codepen.io/KhanSar"
-                                    >
-                                        <i className="fab fa-codepen"></i>
-                                    </StyledAnchor>
-                                </li> */}
                                 <li className="list-inline-item">
                                     <StyledAnchor
                                         target="_blank"
@@ -103,4 +113,4 @@ const Home = ({ add_to_ref: addToRef }) => {
     );
 };
 
-export default Home;
+export default withTranslation()(Home);

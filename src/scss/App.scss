@@ -4,18 +4,14 @@ $skillColor: #43ab92;
 
 @import "./functions";
 @import "./breakpoints";
-@import "./header";
-@import "./home";
 
 // mixin
-@mixin vertical-center {
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-}
 
 html {
     scroll-behavior: smooth;
+}
+body {
+    position: relative;
 }
 .p-relative {
     position: relative;
@@ -24,15 +20,6 @@ html {
     font-size: 18px;
     letter-spacing: 1.5px;
     line-height: 25px;
-}
-.tech-lang {
-    list-style: none;
-    padding: 3px 8px;
-    margin: 0 3px;
-    line-height: 40px;
-    background-color: $skillColor;
-    border-radius: 10px;
-    display: inline;
 }
 .title {
     padding: 20px 0;
@@ -68,20 +55,11 @@ html {
     animation-fill-mode: forwards;
 }
 
-@keyframes fadeInup {
-    from {
-        transform: translate3d(0, 25px, 0);
-    }
-    to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
-}
 .form-check-input {
     border-color: $bg-home;
     margin-right: 10px;
 }
-.form-check-input:checked {
-    background-color: $pm-color;
-    border-color: $pm-color;
+.outline-btn {
+    border: 1px solid $pm-color;
+    border-radius: 25px;
 }

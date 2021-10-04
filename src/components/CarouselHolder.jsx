@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from "react";
+import { withTranslation } from "react-i18next";
 import CarouselItem from "./CarouselItem";
+import Skeleton from "./Skeleton";
 
-export default function CarouselHolder() {
+const CarouselHolder = ({ t, tReady }) => {
     const whatIdo = useRef();
     const items = [
         {
             id: 1,
-            title: "Design + Development",
-            description: `Clean, modern designs - optimized for performance, and converting users to
-                customers.`,
             icon: <i className="bi bi-pencil-square"></i>,
         },
         {
@@ -47,6 +46,7 @@ export default function CarouselHolder() {
     ];
 
     useEffect(() => {
+        // get index of a child
         function indexInParent(node) {
             var children = node.parentNode.childNodes;
             var num = 0;
@@ -60,6 +60,7 @@ export default function CarouselHolder() {
             ".carousel-inner .carousel-item"
         );
         // @ts-ignore
+        // Event is triggered with carousel slide
         whatIdo.current.addEventListener("slide.bs.carousel", (el) => {
             let element = el.relatedTarget;
             let itemsPerSlide = 4;
@@ -87,7 +88,32 @@ export default function CarouselHolder() {
             }
         });
     }, []);
-
+    const WhatIdoSkeleton = (props) => {
+        return (
+            <div {...props}>
+                <Skeleton
+                    className="d-flex flex-column justify-centent-center align-items-center py-5"
+                    width="100%"
+                    height="100%"
+                >
+                    <div style={{ marginBottom: "10px" }}>
+                        <Skeleton width="50px" height="50px" />
+                    </div>
+                    <Skeleton width="80%" height="40px" />
+                    <div style={{ marginTop: "20px" }}>
+                        {[...Array(6)].map((_, index) => (
+                            <Skeleton
+                                key={index}
+                                width="300px"
+                                height="10px"
+                                className="mb-2"
+                            />
+                        ))}
+                    </div>
+                </Skeleton>
+            </div>
+        );
+    };
     return (
         <div
             ref={whatIdo}
@@ -96,17 +122,34 @@ export default function CarouselHolder() {
             data-bs-ride="carousel"
         >
             <div className="carousel-inner row w-100 mx-auto text-center">
-                {items.map((item) => (
-                    <CarouselItem
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        icon={item.icon}
-                        className={`carousel-item col-12 col-md-6 col-lg-4 ${
-                            item.id === 1 ? "active" : ""
-                        }`}
-                    />
-                ))}
+                {!tReady
+                    ? items.map((item, index) => (
+                          <WhatIdoSkeleton
+                              key={index}
+                              className={`carousel-item col-12 col-md-6 col-lg-4 ${
+                                  item.id === 1 ? "active" : ""
+                              }`}
+                          />
+                      ))
+                    : items.map((item, index) => (
+                          <CarouselItem
+                              key={item.id}
+                              title={
+                                  t(`what_i_do`, {
+                                      returnObjects: true,
+                                  }).can_do[index].title
+                              }
+                              description={
+                                  t(`what_i_do`, {
+                                      returnObjects: true,
+                                  }).can_do[index].description
+                              }
+                              icon={item.icon}
+                              className={`carousel-item col-12 col-md-6 col-lg-4 ${
+                                  item.id === 1 ? "active" : ""
+                              }`}
+                          />
+                      ))}
             </div>
             <button
                 className="carousel-control-prev"
@@ -128,4 +171,6 @@ export default function CarouselHolder() {
             </button>
         </div>
     );
-}
+};
+
+export default withTranslation()(CarouselHolder);
