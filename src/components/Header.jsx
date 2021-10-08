@@ -81,6 +81,7 @@ const Header = ({ toggle_button: themeToggle, theme }) => {
                                         "nq-about",
                                         "nq-skills",
                                         "nq-portfolio",
+                                        "nq-contact",
                                     ]}
                                     currentClassName="active"
                                     className="navbar-nav me-auto mb-2 mb-lg-0"
