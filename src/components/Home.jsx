@@ -1,9 +1,54 @@
-import React from "react";
-import { StyledAnchor } from "./Header";
+import React, { useEffect, useRef } from "react";
+import Header, { StyledAnchor } from "./Header";
 import { withTranslation } from "react-i18next";
 import Skeleton from "./Skeleton";
+import About from "./About";
+import Skills from "./Skills";
+import Portfolio from "./Portfolio";
+import Contact from "./Contact";
+import Footer from "./Footer";
 
-const Home = ({ t, tReady, add_to_ref: addToRef }) => {
+const Home = ({ t, tReady, theme_toggler: themeToggler, theme }) => {
+    const sections = useRef([]);
+    sections.current = [];
+    const addToRef = (el) => {
+        if (el && !sections.current.includes(el)) {
+            sections.current.push(el);
+        }
+    };
+    useEffect(() => {
+        const sectionOptions = {
+            root: null,
+            threshold: 0.25,
+            rootMargin: "-80px",
+        };
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add("fadeInUp");
+                }
+            });
+        }, sectionOptions);
+        sections.current.forEach((section) => {
+            sectionObserver.observe(section);
+        });
+    }, []);
+    return (
+        <>
+            <Header toggle_button={themeToggler} theme={theme} />
+            <HomeSection t_ready={tReady} t={t} add_to_ref={addToRef} />
+            <About add_to_ref={addToRef} />
+            <Skills add_to_ref={addToRef} />
+            <Portfolio add_to_ref={addToRef} />
+            <Contact add_to_ref={addToRef} />
+            <Footer />
+        </>
+    );
+};
+
+const HomeSection = ({ add_to_ref: addToRef, t_ready: tReady, t }) => {
     const profileImage = process.env.PUBLIC_URL + "/nq-image.jpeg";
     return (
         <section className="nq-home" id="nq-home">
