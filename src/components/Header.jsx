@@ -57,7 +57,7 @@ const Header = ({ toggle_button: themeToggle, theme }) => {
                 <div className="row">
                     <nav
                         id="navbar"
-                        className="navbar navbar-expand-lg p-relative"
+                        className="navbar navbar-expand-lg position-relative"
                     >
                         <div className="container-fluid px-0">
                             <button

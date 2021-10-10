@@ -2,53 +2,55 @@ import React from "react";
 import { Formik, Form as FormiForm, useField } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
+
+const InputGroup = ({ helperText, label, ...props }) => {
+    // @ts-ignore
+    const [field, meta] = useField(props);
+
+    return (
+        <div>
+            <div className="form-group mb-3">
+                <div className="form-label">{label}</div>
+                <input
+                    className={
+                        meta.touched && meta.error
+                            ? "is-invalid form-control"
+                            : "form-control"
+                    }
+                    {...field}
+                    {...props}
+                />
+                <div
+                    className={
+                        meta.touched && meta.error
+                            ? "invalid-feedback"
+                            : "form-text"
+                    }
+                >
+                    {meta.touched && meta.error ? meta.error : helperText}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 export default function BootstrapMultiStepForm() {
     const [showResult, setShowResult] = useState(false);
     const [result, setResult] = useState({});
-
-    const InputGroup = ({ helperText, label, ...props }) => {
-        // @ts-ignore
-        const [field, meta] = useField(props);
-
-        return (
-            <div>
-                <div className="form-group mb-3">
-                    <div className="form-label">{label}</div>
-                    <input
-                        className={
-                            meta.touched && meta.error
-                                ? "is-invalid form-control"
-                                : "form-control"
-                        }
-                        {...field}
-                        {...props}
-                    />
-                    <div
-                        className={
-                            meta.touched && meta.error
-                                ? "invalid-feedback"
-                                : "form-text"
-                        }
-                    >
-                        {meta.touched && meta.error ? meta.error : helperText}
-                    </div>
-                </div>
-            </div>
-        );
-    };
     const handleSubmit = (values, helpers) => {
         setShowResult(true);
         setResult(values);
     };
 
     return (
-        <div className="container pt-5">
-            <div className="h1">Bootstrap MultiStep Form</div>
-            <p>
-                Bootstap Multi steps form with help of formik and yup validation
-            </p>
+        <div className="pt-5">
             <div className="row">
-                <div className="cold-md-6 mx-auto">
+                <div className="col-md-6 mx-auto">
+                    <div className="h1">Bootstrap MultiStep Form</div>
+                    <p>
+                        Bootstap Multi steps form with help of formik and yup
+                        validation
+                    </p>
                     <FormikStepper
                         initialValues={{
                             firstName: "",

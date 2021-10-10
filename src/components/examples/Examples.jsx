@@ -12,19 +12,34 @@ export const WhiteBG = styled.div`
 export default function Examples() {
     return (
         <WhiteBG className=" py-5 px-5">
-            <div className="mb-3">
-                <Link className="btn btn-primary" to="/">
-                    Go back home
-                </Link>
+            <GoBackHome />
+
+            <div className="mt-5">
+                <h4>Examples</h4>
+                <ul className="list-group">
+                    <Link
+                        className="list-group-item list-group-item-action"
+                        to="/examples/multistepforms"
+                    >
+                        Multi step forms
+                    </Link>
+                </ul>
             </div>
-            <ul className="list-group">
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/examples/multistepforms"
-                >
-                    Multi step forms
-                </Link>
-            </ul>
         </WhiteBG>
     );
 }
+
+export const GoBackHome = () => {
+    const BackHomeButton = styled.div`
+        position: fixed;
+        top: 50px;
+        right: 50px;
+    `;
+    return (
+        <BackHomeButton className="mb-3">
+            <Link className="btn btn-primary" to="/">
+                Go back home
+            </Link>
+        </BackHomeButton>
+    );
+};

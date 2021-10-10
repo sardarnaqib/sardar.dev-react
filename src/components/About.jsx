@@ -10,8 +10,8 @@ const About = ({ add_to_ref: addToRef, t, tReady }) => {
         <section className="nq-about pb-4" id="nq-about">
             <div className="container">
                 <div className="row ">
-                    <div className="w-100 py-3 text-center p-relative">
-                        <h1 className="title text-uppercase p-relative">
+                    <div className="w-100 py-3 text-center position-relative">
+                        <h1 className="title text-uppercase position-relative">
                             {!tReady ? (
                                 <Skeleton
                                     width="200px"
